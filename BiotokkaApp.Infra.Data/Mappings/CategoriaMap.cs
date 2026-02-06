@@ -34,7 +34,6 @@ namespace BiotokkaApp.Infra.Data.Mappings
                    .HasForeignKey(p => p.CategoriaId)
                    .OnDelete(DeleteBehavior.Cascade);
         }
-    }
-    {
-    }
+    }    
+    
 }
