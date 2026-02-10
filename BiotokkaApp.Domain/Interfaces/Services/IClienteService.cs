@@ -14,8 +14,8 @@ namespace BiotokkaApp.Domain.Interfaces.Services
 
         ClienteResponseDTO Excluir(int id);
 
-        List<ClienteResponseDTO> Consultar();
+        List<ClienteResponseDTO> ObterTodos();
 
-        ClienteResponseDTO ConsultarPorId(int id);
+        ClienteResponseDTO ObterPorId(int id);
     }
 }

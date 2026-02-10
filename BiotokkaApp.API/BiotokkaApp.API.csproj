@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BiotokkaApp.Domain\BiotokkaApp.Domain.csproj" />
+    <ProjectReference Include="..\BiotokkaApp.Infra.Data\BiotokkaApp.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>

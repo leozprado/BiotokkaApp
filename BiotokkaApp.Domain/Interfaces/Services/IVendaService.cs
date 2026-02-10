@@ -8,7 +8,7 @@ namespace BiotokkaApp.Domain.Interfaces.Services
 {
     public interface IVendaService
     {
-        VendaResponseDTO Criar(VendaRequestDTO request);
+        VendaResponseDTO Cadastrar(VendaRequestDTO request);
 
         VendaResponseDTO Atualizar(int id, VendaRequestDTO request);
 
