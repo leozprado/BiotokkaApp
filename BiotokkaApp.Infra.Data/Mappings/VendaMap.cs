@@ -20,7 +20,7 @@ namespace BiotokkaApp.Infra.Data.Mappings
 
             builder.Property(v => v.ClienteId)
                    .IsRequired()
-                   .HasColumnName("CLIENTE_ID"); 
+                   .HasColumnName("CLIENTE_ID");
             builder.Property(v => v.ProdutoId)
                    .IsRequired()
                    .HasColumnName("PRODUTO_ID");
@@ -45,12 +45,14 @@ namespace BiotokkaApp.Infra.Data.Mappings
                    .HasColumnName("OBSERVACOES")
                    .IsUnicode(false)
                    .IsRequired(false);
+
             builder.HasOne(v => v.Cliente)
-                   .WithMany()
+                   .WithMany(c => c.Vendas) // ✅ navegação correta
                    .HasForeignKey(v => v.ClienteId)
                    .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasOne(v => v.Produto)
-                   .WithMany()
+                   .WithMany(p => p.Vendas)
                    .HasForeignKey(v => v.ProdutoId)
                    .OnDelete(DeleteBehavior.Restrict);
         }

@@ -4,12 +4,11 @@ using System.Text;
 
 namespace BiotokkaApp.Domain.Dtos.Responses
 {
-    public record CategoriaResponseDTO
-    (
+    public record CriarContaResponse
+   (
         int Id,
         string Nome,
-        string Descricao,
-        DateTime DataCadastro
-    );
-    
+        string Email,
+        DateTime DataCriacao
+        );
 }

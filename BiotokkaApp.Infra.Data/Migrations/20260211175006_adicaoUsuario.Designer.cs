@@ -4,6 +4,7 @@ using BiotokkaApp.Infra.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BiotokkaApp.Infra.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20260211175006_adicaoUsuario")]
+    partial class adicaoUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,29 +110,6 @@ namespace BiotokkaApp.Infra.Data.Migrations
                     b.ToTable("CLIENTES", (string)null);
                 });
 
-            modelBuilder.Entity("BiotokkaApp.Domain.Entities.Perfil", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("ID");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)")
-                        .HasColumnName("NOME");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Nome")
-                        .IsUnique();
-
-                    b.ToTable("PERFIS", (string)null);
-                });
-
             modelBuilder.Entity("BiotokkaApp.Domain.Entities.Produto", b =>
                 {
                     b.Property<int>("Id")
@@ -169,12 +149,10 @@ namespace BiotokkaApp.Infra.Data.Migrations
 
             modelBuilder.Entity("BiotokkaApp.Domain.Entities.Usuario", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("ID");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DataHoraCriacao")
                         .HasColumnType("datetime2")
@@ -192,10 +170,6 @@ namespace BiotokkaApp.Infra.Data.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("NOME");
 
-                    b.Property<int>("PerfilId")
-                        .HasColumnType("int")
-                        .HasColumnName("PERFIL_ID");
-
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -206,8 +180,6 @@ namespace BiotokkaApp.Infra.Data.Migrations
 
                     b.HasIndex("Email")
                         .IsUnique();
-
-                    b.HasIndex("PerfilId");
 
                     b.ToTable("USUARIOS", (string)null);
                 });
@@ -274,17 +246,6 @@ namespace BiotokkaApp.Infra.Data.Migrations
                     b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("BiotokkaApp.Domain.Entities.Usuario", b =>
-                {
-                    b.HasOne("BiotokkaApp.Domain.Entities.Perfil", "Perfil")
-                        .WithMany("Usuarios")
-                        .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Perfil");
-                });
-
             modelBuilder.Entity("BiotokkaApp.Domain.Entities.Venda", b =>
                 {
                     b.HasOne("BiotokkaApp.Domain.Entities.Cliente", "Cliente")
@@ -312,11 +273,6 @@ namespace BiotokkaApp.Infra.Data.Migrations
             modelBuilder.Entity("BiotokkaApp.Domain.Entities.Cliente", b =>
                 {
                     b.Navigation("Vendas");
-                });
-
-            modelBuilder.Entity("BiotokkaApp.Domain.Entities.Perfil", b =>
-                {
-                    b.Navigation("Usuarios");
                 });
 
             modelBuilder.Entity("BiotokkaApp.Domain.Entities.Produto", b =>

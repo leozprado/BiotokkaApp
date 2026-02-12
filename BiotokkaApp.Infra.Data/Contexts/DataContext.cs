@@ -20,6 +20,8 @@ namespace BiotokkaApp.Infra.Data.Contexts
             modelBuilder.ApplyConfiguration(new ProdutoMap());
             modelBuilder.ApplyConfiguration(new ClienteMap());
             modelBuilder.ApplyConfiguration(new VendaMap());
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new PerfilMap());
         }
 
     }

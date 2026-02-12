@@ -86,6 +86,7 @@ namespace BiotokkaApp.Domain.Services
                 return new CategoriaResponseDTO(
                     Id: categoria.Id,
                     Nome: categoria.Nome,
+                    Descricao: categoria.Descricao,
                     DataCadastro: DateTime.UtcNow
                 );
             }

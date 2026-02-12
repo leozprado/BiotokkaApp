@@ -20,7 +20,8 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(CorsPolicyName, policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
+        policy.WithOrigins("http://localhost:5173",
+            "http://localhost:5119")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -36,6 +37,9 @@ builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<IprodutoService, ProdutoService>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>(); 
+builder.Services.AddTransient<IPerfilRepository, PerfilRepository>(); 
+builder.Services.AddTransient<IUsuarioService, UsuarioService>();
 
 var app = builder.Build();
 

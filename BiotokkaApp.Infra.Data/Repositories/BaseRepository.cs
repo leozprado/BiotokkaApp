@@ -9,7 +9,7 @@ namespace BiotokkaApp.Infra.Data.Repositories
 {
     public class BaseRepository<TEntity> : IbaseRepository<TEntity> where TEntity : class
     {
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             using (var dataContext = new DataContext())
             {
@@ -18,7 +18,7 @@ namespace BiotokkaApp.Infra.Data.Repositories
             }
         }
 
-        public void Delete(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             using (var dataContext = new DataContext())
             {
@@ -27,7 +27,7 @@ namespace BiotokkaApp.Infra.Data.Repositories
             }
         }
 
-        public List<TEntity> GetAll()
+        public virtual List<TEntity> GetAll()
         {
             using (var dataContext = new DataContext())
             {
@@ -35,7 +35,7 @@ namespace BiotokkaApp.Infra.Data.Repositories
             }
         }
 
-        public TEntity? GetById(int id)
+        public virtual TEntity? GetById(int id)
         {
             using (var dataContext = new DataContext())
             {
@@ -43,7 +43,7 @@ namespace BiotokkaApp.Infra.Data.Repositories
             }
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             using (var dataContext = new DataContext())
             {
