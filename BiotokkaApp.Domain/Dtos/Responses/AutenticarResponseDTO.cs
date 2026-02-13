@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BiotokkaApp.Domain.Dtos.Responses
 {
-    public record AutenticarResponse(
+    public record AutenticarResponseDTO(
            int id, //Id do usuário
            string nome, //Nome do usuário
            string email, //Email do usuário

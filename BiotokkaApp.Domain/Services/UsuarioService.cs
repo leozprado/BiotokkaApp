@@ -68,7 +68,7 @@ namespace BiotokkaApp.Domain.Services
                 );
         }
 
-        public AutenticarResponse AutenticarConta(AutenticarRequest request)
+        public AutenticarResponseDTO AutenticarConta(AutenticarRequest request)
         {
             //Buscar o usuário no banco de dados baseado no email e na senha.
             var usuario = usuarioRepository.Get(request.email, CryptoHelper.ToSha256(request.senha));
@@ -84,7 +84,7 @@ namespace BiotokkaApp.Domain.Services
 
 
             //retornar os dados do usuário autenticado
-            return new AutenticarResponse(
+            return new AutenticarResponseDTO(
                     usuario.Id, //Id do usuário
                     usuario.Nome, //Nome do usuario
                     usuario.Email, //Email do usuário

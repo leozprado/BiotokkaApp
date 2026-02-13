@@ -10,6 +10,6 @@ namespace BiotokkaApp.Domain.Interfaces.Services
     {
         CriarContaResponse CriarConta(CriarContaRequest request);
 
-        AutenticarResponse AutenticarConta(AutenticarRequest request);
+        AutenticarResponseDTO AutenticarConta(AutenticarRequest request);
     }
 }

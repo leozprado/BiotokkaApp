@@ -2,6 +2,7 @@ using BiotokkaApp.Domain.Interfaces.Repositories;
 using BiotokkaApp.Domain.Interfaces.Services;
 using BiotokkaApp.Domain.Services;
 using BiotokkaApp.Infra.Data.Repositories;
+using BiotokkaApp.Infra.Data.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +29,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IVendaService, VendaService>();
@@ -40,6 +40,7 @@ builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>(); 
 builder.Services.AddTransient<IPerfilRepository, PerfilRepository>(); 
 builder.Services.AddTransient<IUsuarioService, UsuarioService>();
+builder.Services.AddHttpClient<IViaCepService, ViaCepService>();
 
 var app = builder.Build();
 
